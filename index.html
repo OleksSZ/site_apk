@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Схема</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%99%EF%B8%8F</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Схема простого конвеєра обробки даних</h1>
+  <span>навчальний приклад · HTML/CSS/JS без фреймворків</span>
+</header>
+
+<main>
+  <section class="card" id="diagramCard">
+    <svg id="scheme" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="legend">
+      <span><i style="background:var(--panel-2);border:1.5px solid var(--border)"></i>очікує</span>
+      <span><i style="background:#1c3934;border:1.5px solid var(--accent)"></i>виконується</span>
+      <span><i style="background:#152a27;border:1.5px solid var(--accent-2)"></i>завершено</span>
+      <span><i style="background:#3a1c1a;border:1.5px solid var(--warn)"></i>помилка</span>
+    </div>
+    <div class="controls">
+      <button class="primary" id="runBtn">Запустити</button>
+      <button class="danger" id="runErrBtn">Запустити з помилкою</button>
+      <button id="resetBtn">Скинути</button>
+    </div>
+    <div id="log"></div>
+  </section>
+
+  <section class="card" id="info">
+    <h2 id="infoTitle">Оберіть елемент схеми</h2>
+    <p id="infoText">Клікніть по будь-якому блоку на схемі, щоб побачити пояснення, що він робить.</p>
+    <div class="hint">Натисніть «Запустити», щоб побачити рух даних по конвеєру. «Запустити з помилкою» зупиняє процес на випадковому етапі.</div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
