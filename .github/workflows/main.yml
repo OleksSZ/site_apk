@@ -1,14 +1,20 @@
-version: "3.9"
+name: Build APK
 
-services:
-  apk-builder:
-    image: beevelop/cordova:latest   # містить Node + Java + Android SDK + Gradle
-    working_dir: /app
-    volumes:
-      - ./:/app                      # весь проєкт (HTML/CSS/JS + config.xml)
-      - ./dist:/app/platforms/android/app/build/outputs/apk
-    entrypoint: >
-      sh -c "
-        cordova platform add android || true &&
-        cordova build android --release
-      "
+on:
+  workflow_dispatch:   # запуск вручну кнопкою "Run workflow" на вкладці Actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build APK via docker-compose
+        run: docker compose up --build
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-apk
+          path: dist/**/*.apk
