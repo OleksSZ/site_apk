@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="ua.oleks.pipelinescheme" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>PipelineScheme</name>
+    <description>Навчальна схема простого конвеєра обробки даних</description>
+    <author email="you@example.com">OleksSZ</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="AndroidXEnabled" value="true" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+</widget>
