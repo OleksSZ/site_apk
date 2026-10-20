@@ -1,0 +1,9 @@
+{
+  "name": "ua.oleks.pipelinescheme",
+  "displayName": "PipelineScheme",
+  "version": "1.0.0",
+  "private": true,
+  "cordova": {
+    "platforms": []
+  }
+}
