@@ -5,10 +5,12 @@ services:
     image: beevelop/cordova:latest   # містить Node + Java + Android SDK + Gradle
     working_dir: /app
     volumes:
-      - ./:/app                      # весь проєкт (HTML/CSS/JS + config.xml)
-      - ./dist:/app/platforms/android/app/build/outputs/apk
+      - ./:/app                      # весь проєкт (config.xml + www/), dist/ з'явиться тут же
     entrypoint: >
       sh -c "
-        cordova platform add android || true &&
-        cordova build android --release
+        set -e &&
+        ( [ -f platforms/android/cordova/Api.js ] || cordova platform add android ) &&
+        cordova build android --debug &&
+        mkdir -p dist &&
+        cp -r platforms/android/app/build/outputs/apk/. dist/
       "

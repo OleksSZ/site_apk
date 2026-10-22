@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Схема</title>
+<title>Схема конвеєра</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%99%EF%B8%8F</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -33,11 +33,26 @@
 
   <section class="card" id="info">
     <h2 id="infoTitle">Оберіть елемент схеми</h2>
-    <p id="infoText">Клікніть по будь-якому блоку на схемі, щоб побачити пояснення, що він робить.</p>
+    <p id="infoText">Клікніть по будь-якому блоку на схемі — відкриється вікно з поясненням, що він робить.</p>
     <div class="hint">Натисніть «Запустити», щоб побачити рух даних по конвеєру. «Запустити з помилкою» зупиняє процес на випадковому етапі.</div>
   </section>
 </main>
 
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle"></h2>
+        <span id="modalSub"></span>
+      </div>
+      <button id="modalClose" aria-label="Закрити">✕</button>
+    </div>
+    <p id="modalText"></p>
+    <button class="primary" id="modalOk">Зрозуміло</button>
+  </div>
+</div>
+
+<script src="cordova.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
