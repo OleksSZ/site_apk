@@ -40,9 +40,35 @@ stages.forEach((s,i)=>{
   document.getElementById(`node-${s.id}`).addEventListener('click', ()=>{
     document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));
     document.getElementById(`node-${s.id}`).classList.add('selected');
-    infoTitle.textContent = s.title;
-    infoText.textContent = s.desc;
+    openModal(s);
   });
+});
+
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalSub = document.getElementById('modalSub');
+const modalText = document.getElementById('modalText');
+
+function openModal(s){
+  modalTitle.textContent = s.title;
+  modalSub.textContent = s.sub;
+  modalText.textContent = s.desc;
+  modal.hidden = false;
+  document.body.classList.add('modal-open');
+}
+function closeModal(){
+  if(modal.hidden) return false;
+  modal.hidden = true;
+  document.body.classList.remove('modal-open');
+  document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));
+  return true;
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOk').addEventListener('click', closeModal);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+// кнопка «Назад» на Android (Cordova): спершу закриває вікно, а не застосунок
+document.addEventListener('deviceready', ()=>{
+  document.addEventListener('backbutton', ()=>{ if(!closeModal()) navigator.app && navigator.app.exitApp(); }, false);
 });
 
 function logLine(text, cls){
@@ -105,4 +131,4 @@ runErrBtn.addEventListener('click', ()=>{
   const failAt = Math.floor(Math.random()*stages.length);
   runPipeline(failAt);
 });
-resetBtn.addEventListener('click', ()=>{ resetVisuals(); infoTitle.textContent='Оберіть елемент схеми'; infoText.textContent='Клікніть по будь-якому блоку на схемі, щоб побачити пояснення, що він робить.'; });
+resetBtn.addEventListener('click', ()=>{ resetVisuals(); infoTitle.textContent='Оберіть елемент схеми'; infoText.textContent='Клікніть по будь-якому блоку на схемі — відкриється вікно з поясненням, що він робить.'; });
